@@ -25,8 +25,8 @@ public class FlightService {
     private final AirportRepository airportRepository;
 
     public void createFlight(FlightCreateRequestDTO flight) {
-        if (flight.getDepartureDate().isAfter(flight.getReturnDate())
-                || flight.getDepartureDate().isEqual(flight.getReturnDate())) {
+        if (flight.getReturnDate() != null && (flight.getDepartureDate().isAfter(flight.getReturnDate())
+                || flight.getDepartureDate().isEqual(flight.getReturnDate()))) {
             throw new IllegalStateException("Return time should be after the departure time!");
         }
         Flight createdFlight = new Flight();
