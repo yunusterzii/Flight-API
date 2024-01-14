@@ -7,12 +7,12 @@ import com.example.flightapp.entity.Airport;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
-public class FlightCreateRequestDTO {
+@Setter
+public class FlightGetRequestDTO {
     private Airport departureAirport;
     private Airport returnAirport;
     private LocalDateTime departureDate;
-    private LocalDateTime returnDate;
     private Long price;
+    private FlightReturnDTO returnFlight;
 }

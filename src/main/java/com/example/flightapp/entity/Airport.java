@@ -2,9 +2,12 @@ package com.example.flightapp.entity;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,9 +31,11 @@ public class Airport {
     @Column(name = "city")
     private String city;
 
-    @OneToMany(mappedBy = "departureAirport", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "departureAirport", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Flight> departuring_flights;
 
-    @OneToMany(mappedBy = "returnAirport", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "returnAirport", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Flight> returning_flights;
 }

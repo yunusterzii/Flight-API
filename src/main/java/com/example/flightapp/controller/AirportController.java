@@ -52,7 +52,7 @@ public class AirportController {
         return new ResponseEntity<>("Airport updated successfully", HttpStatus.OK);
     }
 
-    @DeleteMapping("path/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteAirportById(@PathVariable Long id) {
         if (getAirportById(id) == null) {
             return new ResponseEntity<>("Airport not found!", HttpStatus.BAD_REQUEST);

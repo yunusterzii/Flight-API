@@ -33,11 +33,11 @@ public class Flight {
     @JoinColumn(name = "return_airport_id", referencedColumnName = "id", nullable = false)
     private Airport returnAirport;
 
-    @Column(name = "departure_time", nullable = false)
-    private LocalDateTime departureTime;
+    @Column(name = "departure_date", nullable = false)
+    private LocalDateTime departureDate;
 
-    @Column(name = "return_time")
-    private LocalDateTime returnTime;
+    @Column(name = "return_date")
+    private LocalDateTime returnDate;
 
     @Column(name = "price", nullable = false)
     private Long price;

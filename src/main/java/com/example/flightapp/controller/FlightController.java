@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.flightapp.dto.FlightCreateRequestDTO;
+import com.example.flightapp.dto.FlightGetRequestDTO;
 import com.example.flightapp.dto.FlightSearchRequestDTO;
 import com.example.flightapp.entity.Flight;
 import com.example.flightapp.service.FlightService;
@@ -43,7 +44,7 @@ public class FlightController {
         return new ResponseEntity<>("Flight created successfully", HttpStatus.OK);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/update/{id}")
     public ResponseEntity<String> updateFlightById(@PathVariable Long id, @RequestBody FlightCreateRequestDTO flight) {
         if (flightService.getFlightById(id) == null) {
             return new ResponseEntity<>("Flight is not found!", HttpStatus.BAD_REQUEST);
@@ -62,7 +63,7 @@ public class FlightController {
     }
 
     @GetMapping("/search")
-    public List<Flight> searchFligths(@RequestBody FlightSearchRequestDTO searchDetail) {
+    public List<FlightGetRequestDTO> searchFligths(@RequestBody FlightSearchRequestDTO searchDetail) {
         return flightService.searchFlights(searchDetail);
     }
 
